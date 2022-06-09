@@ -12,7 +12,7 @@ function postData() {
     const matterResult = matter(fileContents);
     return {
       slug: id,
-      id: matterResult.id,
+      id: matterResult.data.id,
       title: matterResult.data.title,
       excerpt: matterResult.data.excerpt,
       tags: matterResult.data.tags,
