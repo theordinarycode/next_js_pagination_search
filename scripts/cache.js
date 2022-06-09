@@ -11,7 +11,8 @@ function postData() {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const matterResult = matter(fileContents);
     return {
-      id,
+      slug: id,
+      id: matterResult.id,
       title: matterResult.data.title,
       excerpt: matterResult.data.excerpt,
       tags: matterResult.data.tags,

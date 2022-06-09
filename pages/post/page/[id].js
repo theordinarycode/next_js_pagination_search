@@ -7,6 +7,7 @@ import {
 } from "@/src/getData";
 import Router from "next/router";
 import Layout from "@/src/components/layout";
+import Link from "next/link";
 
 const postsPerPage = 3;
 
@@ -19,14 +20,18 @@ function Page({ pageData }) {
 
   return (
     <Layout>
-      {pageData.pagePosts.map((post) => {
-        return (
-          <ul key={post.id}>
-            <h2>{post.meta.title}</h2>
-            <p>{post.meta.excerpt}</p>
-          </ul>
-        );
-      })}
+      <ul>
+        {pageData.pagePosts.map((post) => {
+          return (
+            <li key={post.id}>
+              <a href={`/post/${post.id}`}>
+                <h2>{post.meta.title}</h2>
+                <p>{post.meta.excerpt}</p>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
       <button
         onClick={() => router.push(`/post/page/${previousPage}`)}
         disabled={pageData.pageNumber <= 1}
